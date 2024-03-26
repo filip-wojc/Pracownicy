@@ -6,22 +6,17 @@ using System.Threading.Tasks;
 
 namespace Pracownicy
 {
-    enum AgreementType
-    {
-        Nieokreslony,
-        Okreslony,
-        Zlecenie
-    }
+  
     class Pracownik
     {
         public string Name { get; set; }
         public string Surname {  get; set; }
-        public DateTime DateOfBirth { get; set; }
+        public string DateOfBirth { get; set; }
         public int Salary { get; set; }
         public string Job {  get; set; }
-        public AgreementType Agreement { get; set; }
+        public string Agreement { get; set; }
 
-        public Pracownik(string name, string surname, DateTime dateOfBirth, int salary, string job, AgreementType agreement)
+        public Pracownik(string name, string surname, string dateOfBirth, int salary, string job, string agreement)
         {
             Name = name;
             Surname = surname;
