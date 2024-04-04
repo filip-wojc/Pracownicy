@@ -222,6 +222,7 @@
             this.Save_Btn.TabIndex = 16;
             this.Save_Btn.Text = "Zapisz";
             this.Save_Btn.UseVisualStyleBackColor = true;
+            this.Save_Btn.Click += new System.EventHandler(this.Save_Btn_Click);
             // 
             // Load_btn
             // 
@@ -231,6 +232,7 @@
             this.Load_btn.TabIndex = 17;
             this.Load_btn.Text = "Wczytaj";
             this.Load_btn.UseVisualStyleBackColor = true;
+            this.Load_btn.Click += new System.EventHandler(this.Load_btn_Click);
             // 
             // dataGridView1
             // 
@@ -244,12 +246,13 @@
             this.JobColumn,
             this.AgreementColumn});
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.dataGridView1.Location = new System.Drawing.Point(585, 89);
+            this.dataGridView1.Location = new System.Drawing.Point(582, 68);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 25;
             this.dataGridView1.RowTemplate.Height = 28;
             this.dataGridView1.Size = new System.Drawing.Size(744, 569);
             this.dataGridView1.TabIndex = 18;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.InitializeRowToForm);
             // 
             // nameColumn
             // 

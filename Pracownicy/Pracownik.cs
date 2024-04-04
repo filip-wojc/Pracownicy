@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Pracownicy
 {
   
-    class Pracownik
+    public class Pracownik
     {
         public string Name { get; set; }
         public string Surname {  get; set; }
@@ -26,9 +27,12 @@ namespace Pracownicy
             Agreement = agreement;
         }
 
+        public Pracownik() { }
+
         public override string ToString()
         {
             return $"{this.Name}, {this.Surname}, {this.DateOfBirth}, {this.Salary}, {this.Job}, {this.Agreement}";
         }
+
     }
 }
