@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Pracownicy.LoadingFiles;
+using Pracownicy.SavingFIles;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -95,28 +97,16 @@ namespace Pracownicy
 
         private void Save_Btn_Click(object sender, EventArgs e)
         {
+            SaveState saveState = new SaveState();
+
             using (FolderBrowserDialog fd = new FolderBrowserDialog())
             {
                 DialogResult dialogResult = fd.ShowDialog();
                 if(dialogResult == DialogResult.OK && !string.IsNullOrWhiteSpace(fd.SelectedPath))
                 {
-                    XmlSerializer serializer = new XmlSerializer(typeof(List<Pracownik>));
-                    DateTime now = DateTime.Now;
-                    int currYear = now.Year;
-                    int currMonth = now.Month;
-                    int currDay = now.Day;
-                    int currHour = now.Hour;
-                    int currMinute = now.Minute;
-                    int currSecond = now.Second;
-
-                    string path = Path.Combine(fd.SelectedPath, 
-                        $"pracownicy_{currYear}_{currMonth}_{currDay}__{currHour}_{currMinute}_{currSecond}.xml");
+                    saveState.SaveEmployeesToXMLFile(pracownicy, fd.SelectedPath);
+                    //saveState.SaveEmployeesToTxtFile(pracownicy, fd.SelectedPath);
                     
-                    using (StreamWriter writer = new StreamWriter(path))
-                    {
-                        serializer.Serialize(writer, pracownicy);
-                    }
-                    MessageBox.Show("Serializowanie powiodło się!");
                 }
                 
             }
@@ -125,35 +115,43 @@ namespace Pracownicy
 
         private void Load_btn_Click(object sender, EventArgs e)
         {
-            
+            LoadState loadState = new LoadState();
+
             using (OpenFileDialog fd = new OpenFileDialog())
             {
-                fd.Filter = "XML files (*.xml)|*.xml";
+                fd.Filter = "Wszystkie pliki (*.*)|*.*";
                 fd.FilterIndex = 1;
                 fd.RestoreDirectory = true;
 
                 DialogResult dialogResult = fd.ShowDialog();
                 if (dialogResult == DialogResult.OK && !string.IsNullOrWhiteSpace(fd.FileName))
                 {
-                    XmlSerializer serializer = new XmlSerializer(typeof(List<Pracownik>));
-                   
-
-                    using (FileStream fs = new FileStream(fd.FileName, FileMode.Open))
+                    if (fd.FileName.EndsWith("txt"))
                     {
-                        
-                        pracownicy = (List<Pracownik>)serializer.Deserialize(fs);
-                        dataGridView1.Rows.Clear();
-
-                        foreach (var pracownik in pracownicy)
-                        {
-                            dataGridView1.Rows.Add(pracownik.Name, pracownik.Surname, pracownik.DateOfBirth, pracownik.Salary, pracownik.Job, pracownik.Agreement);
-                        }
+                        pracownicy = loadState.LoadEmployeesFromTxtFile(fd.FileName);
                     }
-                    MessageBox.Show("Deserializacja powiodła się!");
-                }
+                    else if(fd.FileName.EndsWith("xml"))
+                    {
+                        pracownicy = loadState.LoadEmployeesFromXMLFile(fd.FileName);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Zły Format pliku");
+                        return;
+                    }
 
+                    dataGridView1.Rows.Clear();
+
+                    foreach (var pracownik in pracownicy)
+                    {
+                        dataGridView1.Rows.Add(pracownik.Name, pracownik.Surname, pracownik.DateOfBirth, pracownik.Salary, pracownik.Job, pracownik.Agreement);
+                    }
+                }
+                
             }
+
         }
+        
 
         private void InitializeRowToForm(object sender, DataGridViewCellEventArgs e)
         {

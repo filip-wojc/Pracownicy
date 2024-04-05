@@ -65,7 +65,7 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(90, 89);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(26, 13);
+            this.label8.Size = new System.Drawing.Size(39, 20);
             this.label8.TabIndex = 0;
             this.label8.Text = "Imię";
             // 
@@ -74,7 +74,7 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(90, 146);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(53, 13);
+            this.label9.Size = new System.Drawing.Size(76, 20);
             this.label9.TabIndex = 1;
             this.label9.Text = "Nazwisko";
             // 
@@ -83,7 +83,7 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(90, 201);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(79, 13);
+            this.label10.Size = new System.Drawing.Size(118, 20);
             this.label10.TabIndex = 2;
             this.label10.Text = "Data urodzenia";
             // 
@@ -92,7 +92,7 @@
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(90, 260);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(39, 13);
+            this.label11.Size = new System.Drawing.Size(57, 20);
             this.label11.TabIndex = 3;
             this.label11.Text = "Pensja";
             // 
@@ -101,7 +101,7 @@
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(90, 313);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(62, 13);
+            this.label12.Size = new System.Drawing.Size(91, 20);
             this.label12.TabIndex = 4;
             this.label12.Text = "Stanowisko";
             // 
@@ -110,7 +110,7 @@
             this.label13.AutoSize = true;
             this.label13.Location = new System.Drawing.Point(90, 372);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(76, 13);
+            this.label13.Size = new System.Drawing.Size(112, 20);
             this.label13.TabIndex = 5;
             this.label13.Text = "Rodzaj umowy";
             // 
@@ -119,7 +119,7 @@
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(62, 47);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(91, 13);
+            this.label14.Size = new System.Drawing.Size(132, 20);
             this.label14.TabIndex = 6;
             this.label14.Text = "Dane pracownika";
             // 
@@ -127,14 +127,14 @@
             // 
             this.nameBox.Location = new System.Drawing.Point(251, 83);
             this.nameBox.Name = "nameBox";
-            this.nameBox.Size = new System.Drawing.Size(285, 20);
+            this.nameBox.Size = new System.Drawing.Size(285, 26);
             this.nameBox.TabIndex = 7;
             // 
             // SurnameBox
             // 
             this.SurnameBox.Location = new System.Drawing.Point(251, 143);
             this.SurnameBox.Name = "SurnameBox";
-            this.SurnameBox.Size = new System.Drawing.Size(285, 20);
+            this.SurnameBox.Size = new System.Drawing.Size(285, 26);
             this.SurnameBox.TabIndex = 8;
             // 
             // DatePickerBox
@@ -142,7 +142,7 @@
             this.DatePickerBox.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.DatePickerBox.Location = new System.Drawing.Point(251, 194);
             this.DatePickerBox.Name = "DatePickerBox";
-            this.DatePickerBox.Size = new System.Drawing.Size(285, 20);
+            this.DatePickerBox.Size = new System.Drawing.Size(285, 26);
             this.DatePickerBox.TabIndex = 9;
             // 
             // SalaryBox
@@ -154,7 +154,7 @@
             0,
             0});
             this.SalaryBox.Name = "SalaryBox";
-            this.SalaryBox.Size = new System.Drawing.Size(140, 20);
+            this.SalaryBox.Size = new System.Drawing.Size(140, 26);
             this.SalaryBox.TabIndex = 10;
             // 
             // JobBox
@@ -168,7 +168,7 @@
             "Starszy programista"});
             this.JobBox.Location = new System.Drawing.Point(251, 304);
             this.JobBox.Name = "JobBox";
-            this.JobBox.Size = new System.Drawing.Size(285, 21);
+            this.JobBox.Size = new System.Drawing.Size(285, 28);
             this.JobBox.TabIndex = 11;
             // 
             // AgreementBtn1
@@ -176,7 +176,7 @@
             this.AgreementBtn1.AutoSize = true;
             this.AgreementBtn1.Location = new System.Drawing.Point(251, 372);
             this.AgreementBtn1.Name = "AgreementBtn1";
-            this.AgreementBtn1.Size = new System.Drawing.Size(163, 17);
+            this.AgreementBtn1.Size = new System.Drawing.Size(239, 24);
             this.AgreementBtn1.TabIndex = 12;
             this.AgreementBtn1.TabStop = true;
             this.AgreementBtn1.Text = "Umowa na czas nieokreślony";
@@ -187,7 +187,7 @@
             this.AgreementBtn2.AutoSize = true;
             this.AgreementBtn2.Location = new System.Drawing.Point(251, 415);
             this.AgreementBtn2.Name = "AgreementBtn2";
-            this.AgreementBtn2.Size = new System.Drawing.Size(149, 17);
+            this.AgreementBtn2.Size = new System.Drawing.Size(218, 24);
             this.AgreementBtn2.TabIndex = 13;
             this.AgreementBtn2.TabStop = true;
             this.AgreementBtn2.Text = "Umowa na czas określony";
@@ -198,7 +198,7 @@
             this.AgreementBtn3.AutoSize = true;
             this.AgreementBtn3.Location = new System.Drawing.Point(251, 459);
             this.AgreementBtn3.Name = "AgreementBtn3";
-            this.AgreementBtn3.Size = new System.Drawing.Size(103, 17);
+            this.AgreementBtn3.Size = new System.Drawing.Size(150, 24);
             this.AgreementBtn3.TabIndex = 14;
             this.AgreementBtn3.TabStop = true;
             this.AgreementBtn3.Text = "Umowa zlecenie";
