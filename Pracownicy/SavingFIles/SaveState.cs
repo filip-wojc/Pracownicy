@@ -13,18 +13,8 @@ namespace Pracownicy.SavingFIles
     {
         public void SaveEmployeesToTxtFile(IEnumerable<Pracownik> pracownicy, string path)
         {
-            DateTime now = DateTime.Now;
-            int currYear = now.Year;
-            int currMonth = now.Month;
-            int currDay = now.Day;
-            int currHour = now.Hour;
-            int currMinute = now.Minute;
-            int currSecond = now.Second;
 
-            string FullPath = Path.Combine(path,
-                        $"pracownicy_{currYear}_{currMonth}_{currDay}__{currHour}_{currMinute}_{currSecond}.txt");
-
-            using (StreamWriter writer = new StreamWriter(FullPath))
+            using (StreamWriter writer = new StreamWriter(path))
             {
                 writer.WriteLine("Imię | Nazwisko | Data Urodzenia | Pensja | Stanowisko | Rodzaj Umowy");
                 foreach(var p in pracownicy)
@@ -38,18 +28,9 @@ namespace Pracownicy.SavingFIles
         public void SaveEmployeesToXMLFile(IEnumerable<Pracownik> pracownicy, string path)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(List<Pracownik>));
-            DateTime now = DateTime.Now;
-            int currYear = now.Year;
-            int currMonth = now.Month;
-            int currDay = now.Day;
-            int currHour = now.Hour;
-            int currMinute = now.Minute;
-            int currSecond = now.Second;
+      
 
-            string FullPath = Path.Combine(path,
-                        $"pracownicy_{currYear}_{currMonth}_{currDay}__{currHour}_{currMinute}_{currSecond}.xml");
-
-            using (StreamWriter writer = new StreamWriter(FullPath))
+            using (StreamWriter writer = new StreamWriter(path))
             {
                 serializer.Serialize(writer, pracownicy);
             }

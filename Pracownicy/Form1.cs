@@ -99,16 +99,31 @@ namespace Pracownicy
         {
             SaveState saveState = new SaveState();
 
-            using (FolderBrowserDialog fd = new FolderBrowserDialog())
+            using (SaveFileDialog fd = new SaveFileDialog())
             {
                 DialogResult dialogResult = fd.ShowDialog();
-                if(dialogResult == DialogResult.OK && !string.IsNullOrWhiteSpace(fd.SelectedPath))
+                fd.Filter = "Pliki tekstowe (*.txt)|*.txt|Pliki XML (*.xml)|*.xml";
+                fd.FilterIndex = 1;
+                fd.RestoreDirectory = true;
+                if (dialogResult == DialogResult.OK && !string.IsNullOrWhiteSpace(fd.FileName))
                 {
-                    saveState.SaveEmployeesToXMLFile(pracownicy, fd.SelectedPath);
-                    //saveState.SaveEmployeesToTxtFile(pracownicy, fd.SelectedPath);
+                    if (fd.FileName.EndsWith("txt"))
+                    {
+                        saveState.SaveEmployeesToTxtFile(pracownicy, fd.FileName);
+                    }
+                    else if (fd.FileName.EndsWith("xml"))
+                    {
+                        saveState.SaveEmployeesToXMLFile(pracownicy, fd.FileName);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Dozwolone formaty to txt i xml!");
+                        return;
+                    }
                     
                 }
-                
+            
+
             }
                
         }
@@ -119,7 +134,7 @@ namespace Pracownicy
 
             using (OpenFileDialog fd = new OpenFileDialog())
             {
-                fd.Filter = "Wszystkie pliki (*.*)|*.*";
+                fd.Filter = "Pliki tekstowe (*.txt)|*.txt|Pliki XML (*.xml)|*.xml";
                 fd.FilterIndex = 1;
                 fd.RestoreDirectory = true;
 
@@ -134,12 +149,7 @@ namespace Pracownicy
                     {
                         pracownicy = loadState.LoadEmployeesFromXMLFile(fd.FileName);
                     }
-                    else
-                    {
-                        MessageBox.Show("Zły Format pliku");
-                        return;
-                    }
-
+                  
                     dataGridView1.Rows.Clear();
 
                     foreach (var pracownik in pracownicy)
@@ -147,7 +157,7 @@ namespace Pracownicy
                         dataGridView1.Rows.Add(pracownik.Name, pracownik.Surname, pracownik.DateOfBirth, pracownik.Salary, pracownik.Job, pracownik.Agreement);
                     }
                 }
-                
+            
             }
 
         }
@@ -155,22 +165,24 @@ namespace Pracownicy
 
         private void InitializeRowToForm(object sender, DataGridViewCellEventArgs e)
         {
-           
-            DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
-
-            if(!row.IsNewRow)
+            if (e.RowIndex >= 0)
             {
-                nameBox.Text = row.Cells[0].Value.ToString();
-                SurnameBox.Text = row.Cells[1].Value.ToString();
-                DatePickerBox.Text = row.Cells[2].Value.ToString();
-                SalaryBox.Value = Convert.ToInt32(row.Cells[3].Value);
-                JobBox.Text = row.Cells[4].Value.ToString();
+                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
 
-                string agreementTypeInTable = row.Cells[5].Value.ToString();
-                if (AgreementBtn1.Text.Equals(agreementTypeInTable)) { AgreementBtn1.Checked = true; }
-                else if (AgreementBtn2.Text.Equals(agreementTypeInTable)) { AgreementBtn2.Checked = true; }
-                else if (AgreementBtn3.Text.Equals(agreementTypeInTable)) { AgreementBtn3.Checked = true; }
-            }  
+                if (!row.IsNewRow)
+                {
+                    nameBox.Text = row.Cells[0].Value.ToString();
+                    SurnameBox.Text = row.Cells[1].Value.ToString();
+                    DatePickerBox.Text = row.Cells[2].Value.ToString();
+                    SalaryBox.Value = Convert.ToInt32(row.Cells[3].Value);
+                    JobBox.Text = row.Cells[4].Value.ToString();
+
+                    string agreementTypeInTable = row.Cells[5].Value.ToString();
+                    if (AgreementBtn1.Text.Equals(agreementTypeInTable)) { AgreementBtn1.Checked = true; }
+                    else if (AgreementBtn2.Text.Equals(agreementTypeInTable)) { AgreementBtn2.Checked = true; }
+                    else if (AgreementBtn3.Text.Equals(agreementTypeInTable)) { AgreementBtn3.Checked = true; }
+                }
+            }
             
         }
     }
