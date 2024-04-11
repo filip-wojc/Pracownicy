@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Pracownicy.Models;
+using Pracownicy.Presenters;
+using Pracownicy.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +19,10 @@ namespace Pracownicy
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            IPracownikView view = new Form1();
+            IPracownikRepository repository = new PracownikRepository();
+            new PracownikPresenter(view, repository);
+            Application.Run((Form)view);
         }
     }
 }

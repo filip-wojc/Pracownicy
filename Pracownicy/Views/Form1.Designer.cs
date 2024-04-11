@@ -1,4 +1,4 @@
-﻿namespace Pracownicy
+﻿namespace Pracownicy.Views
 {
     partial class Form1
     {
@@ -212,7 +212,7 @@
             this.Add_btn.TabIndex = 15;
             this.Add_btn.Text = "Dodaj";
             this.Add_btn.UseVisualStyleBackColor = true;
-            this.Add_btn.Click += new System.EventHandler(this.Add_btn_Click);
+            
             // 
             // Save_Btn
             // 
@@ -222,7 +222,7 @@
             this.Save_Btn.TabIndex = 16;
             this.Save_Btn.Text = "Zapisz";
             this.Save_Btn.UseVisualStyleBackColor = true;
-            this.Save_Btn.Click += new System.EventHandler(this.Save_Btn_Click);
+            
             // 
             // Load_btn
             // 
@@ -232,7 +232,7 @@
             this.Load_btn.TabIndex = 17;
             this.Load_btn.Text = "Wczytaj";
             this.Load_btn.UseVisualStyleBackColor = true;
-            this.Load_btn.Click += new System.EventHandler(this.Load_btn_Click);
+            
             // 
             // dataGridView1
             // 
